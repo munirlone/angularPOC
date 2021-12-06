@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="col-md-12 margin-top">
+        <h3>Well Detail</h3>
+        <form [formGroup]="wellForm" (ngSubmit)="onSubmit()">
+
+
+            <div class="mb-3">
+
+                <label class="form-label" for="wellName">Name*</label>
+                <input type="text" class="form-control" id="wellName" formControlName="name" placeholder="Enter Name"
+                    required />
+                <div class="invalid-feedback">
+                    Please provide a valid city.
+                </div>
+            </div>
+            <div class="mb-3">
+
+                <label class="form-label" for="wellType">Type*</label>
+                <input type="text" class="form-control" formControlName="type" id="wellType" placeholder="Enter Type"
+                    required />
+            </div>
+
+            <div class="mb-3">
+
+                <label class="form-label" for="sourceKey">Source Key*</label>
+                <select class="form-select" id="sourceKey" [attr.disabled]="(wellInfo) ? 'disabled' : null"
+                    formControlName="sourceKey" required>
+                    <option *ngFor="let key of sourceKeyList" [ngValue]="key">
+                        {{ key }}
+                    </option>
+                </select>
+            </div>
+
+            <button type="submit" [disabled]="wellForm.invalid" class=" btn btn-primary margin-top">
+                {{(wellInfo && wellForm) ? 'Update Well' : 'Add Well'}} </button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="col-md-12 margin-top">
+        <div *ngIf="toggleScreen">
+            <h3>Well List</h3>
+
+            <button type="button" routerLink="/well/new" class="col-md-1 btn btn-success float-end">New Well</button>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">S No</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Source</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr [ngClass]="applyStyle(user.type)" *ngFor="let user of wellList; let i =index;">
+                        <th scope="row">{{i+1}}</th>
+                        <td> <a (click)="onEdit(user, i)">{{user.name}}</a></td>
+                        <td>{{user.type}}</td>
+                        <td><a class="alert-link" (click)="onEdit(user, i)">{{user.sourceKey}}</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <app-well *ngIf="!toggleScreen" ($AddWellList)="addItem($event)" [wellInfo]="editWellInfo"></app-well>
+        </div>
+    </div>
+</div>

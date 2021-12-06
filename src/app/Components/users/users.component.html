@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="col-md-12 margin-top">
+        <h3>User Details</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Age</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of userInformation; let i =index;">
+
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{user.name}}</td>
+                    <td>{{user.age}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h5>Toggle Content</h5>
+        <div>
+            <label class="label-bold float-right">toggle:</label><br />
+            <label class="switch float-right space-right-adv">
+                <input type="checkbox" (change)="toggleValue()" id="toggleValue" name="toggleValue">
+            </label>
+        </div>
+
+        <ng-template [ngIf]="toggle" [ngIfElse]="othertemplate">
+            <div>
+                <h6> The toggle value is {{toggle}}</h6>
+            </div>
+        </ng-template>
+
+        <ng-template #othertemplate>
+            <div>
+                <h6> The toggle value is {{toggle}}</h6>
+            </div>
+        </ng-template>
+
+    </div>
+</div>
