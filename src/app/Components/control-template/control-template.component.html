@@ -1,0 +1,157 @@
+<div class="container">
+    <div class="row col-md-12 margin-top">
+        <div class="col-md-8">
+            <div *ngFor="let page of [1]">
+
+                <div dnd-droppable (onDropStart)="dropControlStart()" (onDropSuccess)="dropControl($event)"
+                    [dropZones]="['control-container']">
+                    <div *ngIf="controlService.formControls.length==0" class="d-grid gap-1 border p-1">
+                        <h1 class="display-6">Drag your first control
+                            here...
+                        </h1>
+                    </div>
+
+                    <div *ngFor="let control of controlService.formControls; let i = index">
+                        <ul class="list-group">
+                            <li class="list-group-item" id="{{ control.id }}">
+
+                                <div class="float-end">
+                                    <button type="button" (click)="deleteControl_OnClick(control)"
+                                        title="delete this control" class="btn-close" aria-label="Close"></button>
+                                </div>
+
+                                <textbox-control *ngIf="control.controlType == 'textbox'" [_control]="control">
+                                </textbox-control>
+
+                                <numberbox-control *ngIf="control.controlType == 'numberbox'" [_control]="control">
+                                </numberbox-control>
+
+                                <button-control *ngIf="control.controlType == 'button'" [_control]="control">
+                                </button-control>
+
+                                <divider-control *ngIf="control.controlType == 'divider'" [_control]="control">
+                                </divider-control>
+
+                                <dropdown-control *ngIf="control.controlType == 'dropdown'" [_control]="control">
+                                </dropdown-control>
+
+                                <footer-control *ngIf="control.controlType == 'footer'" [_control]="control">
+                                </footer-control>
+
+                                <mask-control *ngIf="control.controlType == 'mask'" [_control]="control">
+                                </mask-control>
+
+                                <spinner-control *ngIf="control.controlType == 'spinner'" [_control]="control">
+                                </spinner-control>
+
+                                <table-control *ngIf="control.controlType == 'table'" [_control]="control">
+                                </table-control>
+
+                                <time-control *ngIf="control.controlType == 'time'" [_control]="control">
+                                </time-control>
+
+                            </li>
+                        </ul>
+
+                    </div>
+
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+
+
+            <div class="d-grid gap-1 border p-1">
+                <div class="btn btn-outline-primary btn-sm" [dragData]="'textbox'" dnd-draggable [dragEnabled]="true"
+                    [dropZones]="['control-container']">
+
+                    <div (click)="objControlFunction.addNewControl('textbox')" id='textbox'>
+                        Text
+                    </div>
+
+                </div>
+                <div class="btn btn-outline-primary btn-sm" [dragData]="'numberbox'" dnd-draggable [dragEnabled]="true"
+                    [dropZones]="['control-container']">
+                    <div (click)="objControlFunction.addNewControl('numberbox')" id='number'>
+                        Number
+                    </div>
+
+                </div>
+                <div class="btn btn-outline-primary btn-sm" [dragData]="'table'" dnd-draggable [dragEnabled]="true"
+                    [dropZones]="['control-container']">
+                    <div (click)="objControlFunction.addNewControl('table')" id='table'>
+                        Table
+                    </div>
+
+                </div>
+
+                <div class="btn btn-outline-primary btn-sm" [dragData]="'time'" dnd-draggable [dragEnabled]="true"
+                    [dropZones]="['control-container']">
+                    <div (click)="objControlFunction.addNewControl('time')" id='time'>
+                        Time
+                    </div>
+
+                </div>
+
+                <div class="btn btn-outline-primary btn-sm" [dragData]="'spinner'" dnd-draggable [dragEnabled]="true"
+                    [dropZones]="['control-container']">
+                    <div (click)="objControlFunction.addNewControl('spinner')" id='spinner'>
+                        Spinner
+                    </div>
+
+                </div>
+
+                <div class="btn btn-outline-primary btn-sm" [dragData]="'mask'" dnd-draggable [dragEnabled]="true"
+                    [dropZones]="['control-container']">
+                    <div (click)="objControlFunction.addNewControl('mask')" id='mask'>
+                        Mask
+                    </div>
+
+                </div>
+
+                <div class="btn btn-outline-primary btn-sm" [dragData]="'footer'" dnd-draggable [dragEnabled]="true"
+                    [dropZones]="['control-container']">
+                    <div (click)="objControlFunction.addNewControl('footer')" id='footer'>
+                        Footer
+                    </div>
+
+                </div>
+
+                <div class="btn btn-outline-primary btn-sm" [dragData]="'dropdown'" dnd-draggable [dragEnabled]="true"
+                    [dropZones]="['control-container']">
+                    <div (click)="objControlFunction.addNewControl('dropdown')" id='dropdown'>
+                        Dropdown
+                    </div>
+
+                </div>
+
+                <div class="btn btn-outline-primary btn-sm" [dragData]="'divider'" dnd-draggable [dragEnabled]="true"
+                    [dropZones]="['control-container']">
+                    <div (click)="objControlFunction.addNewControl('divider')" id='divider'>
+                        Divider
+                    </div>
+                </div>
+
+
+                <div class="btn btn-outline-primary btn-sm" [dragData]="'button'" dnd-draggable [dragEnabled]="true"
+                    [dropZones]="['control-container']">
+                    <div (click)="objControlFunction.addNewControl('button')" id='button'>
+                        Button
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+
+
+    </div>
+</div>
